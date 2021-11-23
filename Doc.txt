@@ -1,0 +1,38 @@
+Not every frontend(UI) requires HTML pages like mobile apps(which has their own scripting tool) or SPA (single page applications which fetch HTML content from backend only once) in such cases we need not have to have template engines like(ejs, pug, handlebars).
+Also you may be using classic node.js application but you need an service APIs to work with(need only data from those services no user interface) in your application.
+
+In all above cases we can create REST APIs because you only need data and no user interface from backend.Basically frontend is decoupled with backend server.
+
+==============================
+REST = Representational State Transfer
+==============================
+
+Note:-
+Difference between traditional web app and REST APIs is that only the response (and the request data) changes, not the general server-side logic!
+
+HTTP Methods : 
+GET - Get a resource from the server
+POST - Post the resource to the server(i.e. create or append resource)
+PUT - Put a resource onto the server(i.e. create or overwrite a resource)
+PATCH - Update parts of an existing resource on the server
+DELETE - Delete a resource on the server
+OPTION - Deteremine weather follow-up request is allowed(sent automatically by browser)
+	 Browser sends this request to server to check weather certain type of method is allowed on server or not 	 before sending the actual request
+
+*******************************************************
+When working with REST APIs we need to keep in mind that,
+
+If out front-end(client) and back-end(server) running on different servers or even different ports of the same server we need to configure it to not have CORS error.
+
+CORS = Cross Origin Resource Sharing
+
+we in express generaly set 3 headers for earch request to relove CORS error(can't be fixed from front-end)
+
+res.setHeader('Access-Control-Allow-Origin', 'codepen.io'); 
+//second argumnet must be list of domains that are allowed to make request to this server, to allow everybody we can use "*"
+
+res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE);
+//second argument will contain a list of methods that are allowed
+
+res.setHeader('Access-Control-Allow-Header','Content-Type, Authorization');
+//second argument contains the information on what kind of headers are allowed for incoming requests, to allow all headers we can use "*"
